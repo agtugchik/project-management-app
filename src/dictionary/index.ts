@@ -35,7 +35,7 @@ const dictionary: Idictionary = {
     },
     MainPage: {
       boards: 'Boards',
-      boardSearch: 'Board search',
+      boardSearch: 'Search for boards and users',
     },
     Board: {
       created: 'Created by',
@@ -151,7 +151,7 @@ const dictionary: Idictionary = {
     },
     MainPage: {
       boards: 'Доски',
-      boardSearch: 'Поиск доски',
+      boardSearch: 'Поиск досок и участников',
     },
     Board: {
       created: 'Создал',

@@ -25,7 +25,11 @@ const MainPage = () => {
           <div className={cl.boardsContainer}>
             {data &&
               (data as IBoard[])
-                .filter((board) => new RegExp(`${searchbar}`, 'i').test(board.title))
+                .filter(
+                  (board): boolean =>
+                    new RegExp(`${searchbar}`, 'i').test(board.title) ||
+                    new RegExp(`${searchbar}`, 'i').test(board.users.toString())
+                )
                 .map((board) => <Board key={board._id} board={board} />)}
             <AddBoard />
           </div>

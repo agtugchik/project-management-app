@@ -80,19 +80,35 @@ const Board: FC<IBoardProps> = ({ board }) => {
       <h4 className={cl.subtitle}>
         {T('Board.created')} {owner}
       </h4>
-      <p>{T('Board.invitedUsers')}</p>
-      <ul>
-        {users.map((user) => {
-          return <li key={user + owner}>{user}</li>;
-        })}
-      </ul>
-      <button
-        className={cl.delete}
-        onClick={(e) => deleteOnClick(e)}
-        disabled={access === 31 ? false : true}
-      >
-        {T('Board.delete')}
-      </button>
+      <div className={cl.usersList__wrapper}>
+        <select
+          defaultValue="invited"
+          className={cl.usersSelect}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <option className={cl.userText} value="invited" disabled>
+            {T('Board.invitedUsers')}:
+          </option>
+          {users.map((user) => {
+            return (
+              <option className={cl.userItem} key={user + owner} value={user} disabled>
+                {user}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <p></p>
+      <ul></ul>
+      {access == 31 && (
+        <button
+          className={cl.delete}
+          onClick={(e) => deleteOnClick(e)}
+          disabled={access === 31 ? false : true}
+        >
+          {T('Board.delete')}
+        </button>
+      )}
       {isModalOpen && (
         <Modal>
           <ConfirmModal handler={confirmDeleteBoard} isLoading={isLoading}></ConfirmModal>
