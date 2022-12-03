@@ -58,9 +58,24 @@ const Board: FC<IBoardProps> = ({ board }) => {
     <div className={cl.container} onClick={boardOnClick}>
       <div className={cl.title_container}>
         <h3 className={cl.title}>{title}</h3>
-        {access === 0 && <img className={cl.lock} src={wathcer}></img>}
-        {access === 30 && <img className={cl.lock} src={invited}></img>}
-        {access === 31 && <img className={cl.lock} src={ownerImg}></img>}
+        {access === 0 && (
+          <div className={cl.tooltip}>
+            <img className={cl.accessImg} src={wathcer}></img>
+            <span className={cl.tooltiptext}>{T('Board.accessWatcher')}</span>
+          </div>
+        )}
+        {access === 30 && (
+          <div className={cl.tooltip}>
+            <img className={cl.accessImg} src={invited}></img>
+            <span className={cl.tooltiptext}>{T('Board.accessInvited')}</span>
+          </div>
+        )}
+        {access === 31 && (
+          <div className={cl.tooltip}>
+            <img className={cl.accessImg} src={ownerImg}></img>
+            <span className={cl.tooltiptext}>{T('Board.accessOwner')}</span>
+          </div>
+        )}
       </div>
       <h4 className={cl.subtitle}>
         {T('Board.created')} {owner}
