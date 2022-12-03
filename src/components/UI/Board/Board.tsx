@@ -101,11 +101,7 @@ const Board: FC<IBoardProps> = ({ board }) => {
       <p></p>
       <ul></ul>
       {access == 31 && (
-        <button
-          className={cl.delete}
-          onClick={(e) => deleteOnClick(e)}
-          disabled={access === 31 ? false : true}
-        >
+        <button className={cl.delete} onClick={(e) => deleteOnClick(e)}>
           {T('Board.delete')}
         </button>
       )}

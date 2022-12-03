@@ -26,9 +26,10 @@ const MainPage = () => {
             {data &&
               (data as IBoard[])
                 .filter(
-                  (board): boolean =>
-                    new RegExp(`${searchbar}`, 'i').test(board.title) ||
-                    new RegExp(`${searchbar}`, 'i').test(board.users.toString())
+                  (board: IBoard): boolean =>
+                    board.title.toLowerCase().includes(searchbar.toLowerCase()) ||
+                    board.owner.toLowerCase().includes(searchbar.toLowerCase()) ||
+                    board.users.toString().toLowerCase().includes(searchbar.toLowerCase())
                 )
                 .map((board) => <Board key={board._id} board={board} />)}
             <AddBoard />
