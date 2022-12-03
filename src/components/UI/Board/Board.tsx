@@ -5,6 +5,9 @@ import { useDeleteBoardMutation } from '../../../API/boardsCalls';
 import { useTranslate } from '../../../hooks/useTranslate';
 import { Modal } from '../../../components/Modal/modal';
 import ConfirmModal from '../../../components/Modal/modals/confirmModal';
+import wathcer from '../../../assets/watcher.svg';
+import invited from '../../../assets/invited.svg';
+import ownerImg from '../../../assets/owner.svg';
 
 interface IBoardProps {
   board: {
@@ -12,11 +15,12 @@ interface IBoardProps {
     title: string;
     users: string[];
     _id: string;
+    access?: number;
   };
 }
 
 const Board: FC<IBoardProps> = ({ board }) => {
-  const { _id: id, owner, title, users } = board;
+  const { _id: id, owner, title, users, access } = board;
   const navigate = useNavigate();
   const [deleteBoard, { isLoading }] = useDeleteBoardMutation();
   const T = useTranslate();
@@ -30,7 +34,7 @@ const Board: FC<IBoardProps> = ({ board }) => {
   }, [isLoading]);
   ///////////////////////////////////////////////////
   const boardOnClick = () => {
-    navigate(`/main/${id}`);
+    if (access === 30 || access === 31) navigate(`/main/${id}`);
   };
 
   const deleteOnClick = (e: MouseEvent) => {
@@ -52,7 +56,12 @@ const Board: FC<IBoardProps> = ({ board }) => {
 
   return (
     <div className={cl.container} onClick={boardOnClick}>
-      <h3 className={cl.title}>{title}</h3>
+      <div className={cl.title_container}>
+        <h3 className={cl.title}>{title}</h3>
+        {access === 0 && <img className={cl.lock} src={wathcer}></img>}
+        {access === 30 && <img className={cl.lock} src={invited}></img>}
+        {access === 31 && <img className={cl.lock} src={ownerImg}></img>}
+      </div>
       <h4 className={cl.subtitle}>
         {T('Board.created')} {owner}
       </h4>
@@ -62,7 +71,11 @@ const Board: FC<IBoardProps> = ({ board }) => {
           return <li key={user + owner}>{user}</li>;
         })}
       </ul>
-      <button className={cl.delete} onClick={(e) => deleteOnClick(e)}>
+      <button
+        className={cl.delete}
+        onClick={(e) => deleteOnClick(e)}
+        disabled={access === 31 ? false : true}
+      >
         {T('Board.delete')}
       </button>
       {isModalOpen && (

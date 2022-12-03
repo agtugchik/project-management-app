@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import baseUrl from './baseUrl';
 import { IBoard } from '../types/boardTypes';
 import getToken from './jwt';
+import { checkBoardAccess } from '../helpers/accessLevel';
 
 export const boardsCalls = createApi({
   reducerPath: 'boardsCalls',
@@ -19,6 +20,12 @@ export const boardsCalls = createApi({
         method: 'GET',
       }),
       providesTags: () => ['Boards'],
+      transformResponse: (res: IBoard[]) => {
+        res.forEach((board) => {
+          board.access = checkBoardAccess(board.owner, board.users);
+        });
+        return res;
+      },
     }),
     getBoard: builder.query<IBoard, string>({
       query: (boardId) => ({
