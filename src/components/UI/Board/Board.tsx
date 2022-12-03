@@ -80,26 +80,26 @@ const Board: FC<IBoardProps> = ({ board }) => {
       <h4 className={cl.subtitle}>
         {T('Board.created')} {owner}
       </h4>
-      <div className={cl.usersList__wrapper}>
-        <select
-          defaultValue="invited"
-          className={cl.usersSelect}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <option className={cl.userText} value="invited" disabled>
-            {T('Board.invitedUsers')}:
-          </option>
-          {users.map((user) => {
-            return (
-              <option className={cl.userItem} key={user + owner} value={user} disabled>
-                {user}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-      <p></p>
-      <ul></ul>
+      {users.length > 0 ? (
+        <div className={cl.usersList__wrapper}>
+          <select
+            defaultValue="invited"
+            className={cl.usersSelect}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <option className={cl.userText} value="invited" disabled>
+              {T('Board.invitedUsers')}:
+            </option>
+            {users.map((user) => {
+              return (
+                <option className={cl.userItem} key={user + owner} value={user} disabled>
+                  {user}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      ) : null}
       {access == 31 && (
         <button className={cl.delete} onClick={(e) => deleteOnClick(e)}>
           {T('Board.delete')}
