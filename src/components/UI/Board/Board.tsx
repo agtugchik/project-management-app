@@ -34,7 +34,7 @@ const Board: FC<IBoardProps> = ({ board }) => {
   }, [isLoading]);
   ///////////////////////////////////////////////////
   const boardOnClick = () => {
-    if (access === 30 || access === 31) navigate(`/main/${id}`);
+    navigate(`/main/${id}`);
   };
 
   const deleteOnClick = (e: MouseEvent) => {

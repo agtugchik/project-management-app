@@ -32,6 +32,10 @@ export const boardsCalls = createApi({
         url: `boards/${boardId}`,
         method: 'GET',
       }),
+      transformResponse: (res: IBoard) => {
+        res.access = checkBoardAccess(res.owner, res.users);
+        return res;
+      },
     }),
     createNewBoard: builder.mutation({
       query: (body) => ({

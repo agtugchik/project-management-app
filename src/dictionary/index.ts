@@ -157,7 +157,7 @@ const dictionary: Idictionary = {
       created: 'Создал',
       delete: 'Удалить',
       invitedUsers: 'Приглашенные пользователи',
-      accessWatcher: 'Только смотреть',
+      accessWatcher: 'Только просмотр',
       accessInvited: 'Вас пригласили',
       accessOwner: 'Вы владелец',
     },
