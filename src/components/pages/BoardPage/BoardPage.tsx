@@ -24,8 +24,7 @@ const BoardPage = () => {
   const location = useLocation();
   const boardId = location.pathname.replace('/main/', '');
   const { data } = useGetAllColumnsQuery(boardId);
-  const { data: boardProps } = useGetBoardQuery(boardId);
-  console.log(boardProps);
+  const { data: boardProps } = useGetBoardQuery(boardId, { refetchOnMountOrArgChange: true });
   const [createNewColumn, { isLoading: isCreatingColumn }] = useCreateNewColumnMutation();
   const { columnsTasks, boardColumns } = useAppSelector((state) => state.BoardReducer);
   const { setLocalBoardColumns } = BoardSlice.actions;

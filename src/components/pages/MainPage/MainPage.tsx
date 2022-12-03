@@ -11,7 +11,7 @@ import AddBoard from '../../UI/AddBoard/AddBoard';
 const MainPage = () => {
   const T = useTranslate();
   const { searchbar } = useAppSelector((state) => state.SearchbarReducer);
-  const { data, isLoading } = useGetAllBoardsQuery(null);
+  const { data, isLoading } = useGetAllBoardsQuery(null, { refetchOnMountOrArgChange: true });
   return (
     <>
       {isLoading ? (
