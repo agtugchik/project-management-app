@@ -5,6 +5,7 @@ import { CreateBoardModalForm, CreacteNewBoardModalProps } from '../../types/mod
 import cl from './creacteNewBoardForm.module.scss';
 import { useTranslate } from '../../hooks/useTranslate';
 import Spinner from '../UI/Spinner/Spinner';
+import { getOwner } from '../../helpers/accessLevel';
 
 export default function CreateNewBoardForm(props: CreacteNewBoardModalProps) {
   const {
@@ -73,7 +74,7 @@ export default function CreateNewBoardForm(props: CreacteNewBoardModalProps) {
                 {invitedUsers?.map((invitedUsers) => {
                   return (
                     <div key={invitedUsers} className={cl.invitedUser}>
-                      <p>{invitedUsers}</p>
+                      <p>{getOwner(invitedUsers)}</p>
                       <img className="removeUserBtn" src={removeUserBtn}></img>
                     </div>
                   );

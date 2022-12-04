@@ -23,11 +23,6 @@ export const invited =
 
 export const owner = invited | Access.Access_Owner;
 
-// export function getId() {
-//   let currentUserId = localStorage.getItem('id');
-//   return currentUserId;
-// }
-
 export function getLogin() {
   const token = localStorage.getItem('token');
   let currentLogin: JwtLogin;
@@ -38,18 +33,18 @@ export function getLogin() {
   return null;
 }
 
-// export function checkBoardAccess(resOwner: string, invitedUsers: string[]) {
-//   const resId = getResId(resOwner);
-//   const userId = localStorage.getItem('id');
-//   // const currentUserId = getId();
-//   const currentLogin = getLogin();
-//   console.log(currentLogin);
-//   return userId && userId === resId
-//     ? owner
-//     : currentLogin && invitedUsers.includes(currentLogin)
-//     ? invited
-//     : watcher;
-// }
+export function checkBoardAccess(resOwner: string, invitedUsers: string[]) {
+  const resId = getResId(resOwner);
+  const userId = localStorage.getItem('id');
+  const transformInvitedUser = transformInvitedUsers(invitedUsers);
+  // const currentUserId = getId();
+  // const currentLogin = getLogin();
+  return userId && userId === resId
+    ? owner
+    : userId && transformInvitedUser.includes(userId)
+    ? invited
+    : watcher;
+}
 
 function getResId(resId: string) {
   const index = resId.indexOf('login');
@@ -58,11 +53,24 @@ function getResId(resId: string) {
   }
 }
 
-export function checkBoardAccess(resOwner: string, invitedUsers: string[]) {
-  const currentLogin = getLogin();
-  return currentLogin && currentLogin === resOwner
-    ? owner
-    : currentLogin && invitedUsers.includes(currentLogin)
-    ? invited
-    : watcher;
+function transformInvitedUsers(invitedUsers: string[]) {
+  return invitedUsers.map((user) => {
+    return getResId(user);
+  });
+}
+
+// export function checkBoardAccess(resOwner: string, invitedUsers: string[]) {
+//   const currentLogin = getLogin();
+//   return currentLogin && currentLogin === resOwner
+//     ? owner
+//     : currentLogin && invitedUsers.includes(currentLogin)
+//     ? invited
+//     : watcher;
+// }
+
+export function getOwner(owner: string) {
+  const login = owner.indexOf('login:');
+  if (~login) {
+    return owner.slice(login + 6);
+  }
 }

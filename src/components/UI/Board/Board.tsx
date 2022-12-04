@@ -8,6 +8,7 @@ import ConfirmModal from '../../../components/Modal/modals/confirmModal';
 import wathcer from '../../../assets/watcher.svg';
 import invited from '../../../assets/invited.svg';
 import ownerImg from '../../../assets/owner.svg';
+import { getOwner } from '../../../helpers/accessLevel';
 
 interface IBoardProps {
   board: {
@@ -78,7 +79,7 @@ const Board: FC<IBoardProps> = ({ board }) => {
         )}
       </div>
       <h4 className={cl.subtitle}>
-        {T('Board.created')} {owner}
+        {T('Board.created')} {getOwner(owner)}
       </h4>
       {users.length > 0 ? (
         <div className={cl.usersList__wrapper}>
@@ -92,8 +93,8 @@ const Board: FC<IBoardProps> = ({ board }) => {
             </option>
             {users.map((user) => {
               return (
-                <option className={cl.userItem} key={user + owner} value={user} disabled>
-                  {user}
+                <option className={cl.userItem} key={user + owner} value={getOwner(user)} disabled>
+                  {getOwner(user)}
                 </option>
               );
             })}

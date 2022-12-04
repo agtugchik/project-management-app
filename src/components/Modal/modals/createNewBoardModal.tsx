@@ -47,9 +47,14 @@ export default function CreacteNewBoardModal() {
 
   function onClickChooseUser(e: React.MouseEvent<HTMLParagraphElement>) {
     const choosenUser = (e.target as HTMLParagraphElement).textContent;
+    const transformChoosenUser = (responseUsers as TranformUsersResponse).users.find(
+      (user) => user.login == choosenUser
+    );
     setInvitedUsers((prevState) => {
-      if (prevState.includes(String(choosenUser))) return prevState;
-      else return [...prevState, String(choosenUser)];
+      if (prevState.includes(`${transformChoosenUser?._id}login:${transformChoosenUser?.login}`))
+        return prevState;
+      else
+        return [...prevState, `${transformChoosenUser?._id}login:${transformChoosenUser?.login}`];
     });
     setAutoCompContent((prevState) => {
       return { ...prevState, currentValue: '' };
@@ -62,12 +67,11 @@ export default function CreacteNewBoardModal() {
     const { title } = data;
     const body = {
       title: `${title}`,
-      owner: (responseUsers as TranformUsersResponse).currentUser?.login,
+      owner: `${(responseUsers as TranformUsersResponse).currentUser?._id}login:${
+        (responseUsers as TranformUsersResponse).currentUser?.login
+      }`,
       users: invitedUsers,
     };
-    // `${(responseUsers as TranformUsersResponse).currentUser?._id}login:${
-    //   (responseUsers as TranformUsersResponse).currentUser?.login
-    // }`
     createNewBoard(body);
     if (!location.pathname.includes(Paths.MainPage)) {
       navigate(Paths.MainPage);
