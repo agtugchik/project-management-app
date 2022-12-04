@@ -66,7 +66,7 @@ const BoardPage = () => {
     const { title } = formData;
     createNewColumn({
       boardId,
-      body: { title: `Column ${title}`, order: (data as []).length },
+      body: { title: `${title}`, order: (data as []).length },
     });
   }
 

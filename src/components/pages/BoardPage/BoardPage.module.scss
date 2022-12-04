@@ -56,6 +56,7 @@ $title-height: calc($font-size-large * 2);
     border-radius: 0.5rem;
     cursor: pointer;
     background-color: cornsilk;
+    min-width: 4.7rem;
     &:hover {
       background-color: #9b612e;
       color: cornsilk;
@@ -89,6 +90,9 @@ $title-height: calc($font-size-large * 2);
   .container {
     .columnsContainer {
       max-width: 320px;
+    }
+    .title {
+      line-height: normal;
     }
   }
 }
