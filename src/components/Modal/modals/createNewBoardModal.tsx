@@ -8,6 +8,7 @@ import { filterUsers } from '../../../helpers/filterUsersResponse';
 import CreateNewBoardForm from '../../createNewBoardForm/createNewBoardForm';
 import { Paths } from '../../../helpers/routerPaths';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getOwner } from '../../../helpers/accessLevel';
 
 export default function CreacteNewBoardModal() {
   const navigate = useNavigate();
@@ -34,7 +35,6 @@ export default function CreacteNewBoardModal() {
     if (isSuccess) {
       dispatch(setModalState(false));
     }
-    return setInvitedUsers([]);
   }, [dispatch, isSuccess]);
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
@@ -92,7 +92,7 @@ export default function CreacteNewBoardModal() {
       const removeUser = (target.previousSibling as HTMLParagraphElement).textContent;
       setInvitedUsers((prevState) => {
         return prevState.filter((invitedUser) => {
-          return invitedUser !== removeUser;
+          return getOwner(invitedUser) !== removeUser;
         });
       });
     }

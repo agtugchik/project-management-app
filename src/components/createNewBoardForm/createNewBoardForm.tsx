@@ -32,11 +32,11 @@ export default function CreateNewBoardForm(props: CreacteNewBoardModalProps) {
     formState: { errors },
   } = useForm<CreateBoardModalForm>({ criteriaMode: 'all', mode: 'onChange' });
 
-  useEffect(() => {
-    setAutoCompContent((prevState) => {
-      return { ...prevState, currentValue: '' };
-    });
-  }, [setAutoCompContent]);
+  // useEffect(() => {
+  //   setAutoCompContent((prevState) => {
+  //     return { ...prevState, currentValue: '' };
+  //   });
+  // }, [setAutoCompContent]);
 
   // Submit handler
   ///////////////////////////
