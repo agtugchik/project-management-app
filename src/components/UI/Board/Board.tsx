@@ -105,6 +105,7 @@ const Board: FC<IBoardProps> = ({ board }) => {
           {T('Board.delete')}
         </button>
       )}
+      {Number(access) < 31 && <div className={cl.plug}></div>}
       {isModalOpen && (
         <Modal>
           <ConfirmModal handler={confirmDeleteBoard} isLoading={isLoading}></ConfirmModal>

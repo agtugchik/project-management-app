@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 
 type JwtLogin = {
+  id: string;
   login: string;
 };
 
@@ -22,6 +23,11 @@ export const invited =
 
 export const owner = invited | Access.Access_Owner;
 
+// export function getId() {
+//   let currentUserId = localStorage.getItem('id');
+//   return currentUserId;
+// }
+
 export function getLogin() {
   const token = localStorage.getItem('token');
   let currentLogin: JwtLogin;
@@ -30,6 +36,26 @@ export function getLogin() {
     return currentLogin.login;
   }
   return null;
+}
+
+// export function checkBoardAccess(resOwner: string, invitedUsers: string[]) {
+//   const resId = getResId(resOwner);
+//   const userId = localStorage.getItem('id');
+//   // const currentUserId = getId();
+//   const currentLogin = getLogin();
+//   console.log(currentLogin);
+//   return userId && userId === resId
+//     ? owner
+//     : currentLogin && invitedUsers.includes(currentLogin)
+//     ? invited
+//     : watcher;
+// }
+
+function getResId(resId: string) {
+  const index = resId.indexOf('login');
+  if (~index) {
+    return resId.slice(0, index);
+  }
 }
 
 export function checkBoardAccess(resOwner: string, invitedUsers: string[]) {

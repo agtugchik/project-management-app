@@ -65,6 +65,9 @@ export default function CreacteNewBoardModal() {
       owner: (responseUsers as TranformUsersResponse).currentUser?.login,
       users: invitedUsers,
     };
+    // `${(responseUsers as TranformUsersResponse).currentUser?._id}login:${
+    //   (responseUsers as TranformUsersResponse).currentUser?.login
+    // }`
     createNewBoard(body);
     if (!location.pathname.includes(Paths.MainPage)) {
       navigate(Paths.MainPage);
