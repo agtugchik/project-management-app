@@ -3,6 +3,7 @@ export interface IBoard {
   title: string;
   users: string[];
   _id: string;
+  access?: number;
 }
 
 export interface IColumn {

@@ -40,6 +40,9 @@ interface IBoardLanguage {
   created: string;
   delete: string;
   invitedUsers: string;
+  accessWatcher:string;
+  accessInvited:string;
+  accessOwner:string;
 }
 
 interface IBorardPageLanguage {

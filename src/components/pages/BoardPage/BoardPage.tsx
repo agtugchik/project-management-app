@@ -25,7 +25,7 @@ const BoardPage = () => {
   const boardId = location.pathname.replace('/main/', '');
   const [createNewColumn, { isLoading: isCreatingColumn }] = useCreateNewColumnMutation();
   const { data, refetch } = useGetAllColumnsQuery(boardId);
-  const { data: boardProps } = useGetBoardQuery(boardId);
+  const { data: boardProps } = useGetBoardQuery(boardId, { refetchOnMountOrArgChange: true });
   const { columnsTasks, boardColumns } = useAppSelector((state) => state.BoardReducer);
   const { setLocalBoardColumns } = BoardSlice.actions;
   const dispatch = useAppDispatch();
@@ -144,36 +144,38 @@ const BoardPage = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      {boardColumns.get(boardId) && (
-        <div className={cl.container}>
-          <h1 className={cl.title}>
-            {T('BoardPage.board')} {boardProps && (boardProps as IBoard).title}
-          </h1>
-          <Droppable droppableId={boardId} direction="horizontal" type="column">
-            {(provided) => (
-              <div
-                className={cl.columnsContainer}
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {boardColumns.get(boardId) &&
-                  [...(boardColumns.get(boardId) as IColumn[])]
-                    .sort((a, b) => a.order - b.order)
-                    .map((column) => (
-                      <Column refetchAdd={refetchAdd} key={column._id} column={column} />
-                    ))}
-                {provided.placeholder}
-                <button className={cl.addColumn} onClick={addColumnOnClick}>
-                  {T('BoardPage.addColumn')}
-                </button>
-              </div>
-            )}
-          </Droppable>
-          <button className={cl.button} onClick={backToMainOnClick}>
-            {T('BoardPage.back')}
-          </button>
-        </div>
-      )}
+      <div className={Number(boardProps?.access) > 0 ? cl.granted : cl.denied}>
+        {boardColumns.get(boardId) && (
+          <div className={cl.container}>
+            <h1 className={cl.title}>
+              {T('BoardPage.board')} {boardProps && (boardProps as IBoard).title}
+            </h1>
+            <Droppable droppableId={boardId} direction="horizontal" type="column">
+              {(provided) => (
+                <div
+                  className={cl.columnsContainer}
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {boardColumns.get(boardId) &&
+                    [...(boardColumns.get(boardId) as IColumn[])]
+                      .sort((a, b) => a.order - b.order)
+                      .map((column) => (
+                        <Column refetchAdd={refetchAdd} key={column._id} column={column} />
+                      ))}
+                  {provided.placeholder}
+                  <button className={cl.addColumn} onClick={addColumnOnClick}>
+                    {T('BoardPage.addColumn')}
+                  </button>
+                </div>
+              )}
+            </Droppable>
+            <button className={cl.button} onClick={backToMainOnClick}>
+              {T('BoardPage.back')}
+            </button>
+          </div>
+        )}
+      </div>
       {isModalOpen && (
         <Modal>
           <CreacteNewColumnModal

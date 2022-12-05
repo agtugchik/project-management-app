@@ -38,6 +38,41 @@
     transition: 0.3s;
     }
   }
+  .title_container{
+    display: flex;
+    justify-content: space-between;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    & .accessImg{
+      width:1.5rem;
+      height: 1.5rem;
+    }
+    & .tooltiptext {
+      font-size: 1.5rem;
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 0 0;
+      width: 120px;
+      top: 50%;
+      left: 50%;
+      margin-left: -60px;
+      position: absolute;
+      z-index: 1;
+    }
+    &:hover .tooltiptext {
+      visibility: visible;
+      transition: 0.3s;
+    }
+  }
+  .plug{
+    height: 30px;
+  }
 }
 
 .usersSelect {

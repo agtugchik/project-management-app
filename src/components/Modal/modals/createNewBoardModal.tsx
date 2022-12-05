@@ -8,6 +8,7 @@ import { filterUsers } from '../../../helpers/filterUsersResponse';
 import CreateNewBoardForm from '../../createNewBoardForm/createNewBoardForm';
 import { Paths } from '../../../helpers/routerPaths';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { getOwner } from '../../../helpers/accessLevel';
 
 export default function CreacteNewBoardModal() {
   const navigate = useNavigate();
@@ -46,9 +47,14 @@ export default function CreacteNewBoardModal() {
 
   function onClickChooseUser(e: React.MouseEvent<HTMLParagraphElement>) {
     const choosenUser = (e.target as HTMLParagraphElement).textContent;
+    const transformChoosenUser = (responseUsers as TranformUsersResponse).users.find(
+      (user) => user.login == choosenUser
+    );
     setInvitedUsers((prevState) => {
-      if (prevState.includes(String(choosenUser))) return prevState;
-      else return [...prevState, String(choosenUser)];
+      if (prevState.includes(`${transformChoosenUser?._id}login:${transformChoosenUser?.login}`))
+        return prevState;
+      else
+        return [...prevState, `${transformChoosenUser?._id}login:${transformChoosenUser?.login}`];
     });
     setAutoCompContent((prevState) => {
       return { ...prevState, currentValue: '' };
@@ -61,7 +67,9 @@ export default function CreacteNewBoardModal() {
     const { title } = data;
     const body = {
       title: `${title}`,
-      owner: (responseUsers as TranformUsersResponse).currentUser?.login,
+      owner: `${(responseUsers as TranformUsersResponse).currentUser?._id}login:${
+        (responseUsers as TranformUsersResponse).currentUser?.login
+      }`,
       users: invitedUsers,
     };
     createNewBoard(body);
@@ -80,7 +88,7 @@ export default function CreacteNewBoardModal() {
       const removeUser = (target.previousSibling as HTMLParagraphElement).textContent;
       setInvitedUsers((prevState) => {
         return prevState.filter((invitedUser) => {
-          return invitedUser !== removeUser;
+          return getOwner(invitedUser) !== removeUser;
         });
       });
     }

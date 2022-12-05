@@ -41,6 +41,9 @@ const dictionary: Idictionary = {
       created: 'Created by',
       delete: 'Delete',
       invitedUsers: 'Invited users',
+      accessWatcher: 'Only watch',
+      accessInvited: 'You been invited',
+      accessOwner: 'You owner',
     },
     BoardPage: {
       board: 'Board',
@@ -154,6 +157,9 @@ const dictionary: Idictionary = {
       created: 'Создал',
       delete: 'Удалить',
       invitedUsers: 'Приглашенные пользователи',
+      accessWatcher: 'Только просмотр',
+      accessInvited: 'Вас пригласили',
+      accessOwner: 'Вы владелец',
     },
     BoardPage: {
       board: 'Доска',
