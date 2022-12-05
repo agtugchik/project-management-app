@@ -13,6 +13,12 @@ enum Access {
   Access_Delete_Task = 16,
 }
 
+export enum AccessConst {
+  Owner_Access = 31,
+  Invited_Access = 30,
+  Watcher_Access = 0,
+}
+
 const watcher = 0;
 
 export const invited =

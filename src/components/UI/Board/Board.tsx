@@ -9,6 +9,7 @@ import wathcer from '../../../assets/watcher.svg';
 import invited from '../../../assets/invited.svg';
 import ownerImg from '../../../assets/owner.svg';
 import { getOwner } from '../../../helpers/accessLevel';
+import { AccessConst } from '../../../helpers/accessLevel';
 
 interface IBoardProps {
   board: {
@@ -59,19 +60,19 @@ const Board: FC<IBoardProps> = ({ board }) => {
     <div className={cl.container} onClick={boardOnClick}>
       <div className={cl.title_container}>
         <h3 className={cl.title}>{title}</h3>
-        {access === 0 && (
+        {access === AccessConst.Watcher_Access && (
           <div className={cl.tooltip}>
             <img className={cl.accessImg} src={wathcer}></img>
             <span className={cl.tooltiptext}>{T('Board.accessWatcher')}</span>
           </div>
         )}
-        {access === 30 && (
+        {access === AccessConst.Invited_Access && (
           <div className={cl.tooltip}>
             <img className={cl.accessImg} src={invited}></img>
             <span className={cl.tooltiptext}>{T('Board.accessInvited')}</span>
           </div>
         )}
-        {access === 31 && (
+        {access === AccessConst.Owner_Access && (
           <div className={cl.tooltip}>
             <img className={cl.accessImg} src={ownerImg}></img>
             <span className={cl.tooltiptext}>{T('Board.accessOwner')}</span>
@@ -101,12 +102,12 @@ const Board: FC<IBoardProps> = ({ board }) => {
           </select>
         </div>
       ) : null}
-      {access == 31 && (
+      {access == AccessConst.Owner_Access && (
         <button className={cl.delete} onClick={(e) => deleteOnClick(e)}>
           {T('Board.delete')}
         </button>
       )}
-      {Number(access) < 31 && <div className={cl.plug}></div>}
+      {Number(access) < AccessConst.Owner_Access && <div className={cl.plug}></div>}
       {isModalOpen && (
         <Modal>
           <ConfirmModal handler={confirmDeleteBoard} isLoading={isLoading}></ConfirmModal>
