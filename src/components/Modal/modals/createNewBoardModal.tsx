@@ -78,12 +78,8 @@ export default function CreacteNewBoardModal() {
     }
   }
 
-  function clickHandler(e: React.MouseEvent<HTMLInputElement>) {
-    const input = (e.target as HTMLElement).closest('input');
-    const value = input?.value;
-    if (value && (value == 'Cancel' || value == 'Отмена')) {
-      dispatch(setModalState(false));
-    }
+  function clickHandler() {
+    dispatch(setModalState(false));
   }
 
   function removeUserOnClick(e: React.MouseEvent<HTMLElement>) {

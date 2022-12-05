@@ -12,13 +12,15 @@ import { CreateBoardModalForm } from '../../../types/modalType';
 
 interface IColumnProps {
   column: IColumn;
+  refetchAdd: (key: string, value: () => void) => void;
 }
 
-const Column: FC<IColumnProps> = ({ column }) => {
+const Column: FC<IColumnProps> = ({ column, refetchAdd }) => {
   const { title, _id: columnId, order, boardId } = column;
+
   const [deleteColumn, { isLoading: isDeleting }] = useDeleteColumnMutation();
-  const { data } = useGetAllTasksQuery({ boardId, columnId }, { refetchOnMountOrArgChange: true });
   const [createNewTask, { isLoading: isCreating }] = useCreateNewTaskMutation();
+  const { data, refetch } = useGetAllTasksQuery({ boardId, columnId });
   const { setLocalColumnTasks } = BoardSlice.actions;
   const dispatch = useAppDispatch();
   const { columnsTasks } = useAppSelector((state) => state.BoardReducer);
@@ -26,9 +28,14 @@ const Column: FC<IColumnProps> = ({ column }) => {
     status: 'title',
     value: title,
   });
+
+  refetchAdd(columnId, refetch);
+
   useEffect(() => {
-    if (data) dispatch(setLocalColumnTasks([columnId, [...(data as ITask[])]]));
-  }, [columnId, data, dispatch, setLocalColumnTasks]);
+    if (data && !columnsTasks.get(columnId)) {
+      dispatch(setLocalColumnTasks([columnId, [...(data as ITask[])]]));
+    }
+  }, [columnId, columnsTasks, data, dispatch, setLocalColumnTasks]);
   //Modal manipulations
   ////////////////////////
   const [isModalDeleteOpen, setModalDeleteOpen] = useState(false);
@@ -71,7 +78,7 @@ const Column: FC<IColumnProps> = ({ column }) => {
     }
   }
 
-  function submitCreateTaskHandler(formData: CreateBoardModalForm) {
+  async function submitCreateTaskHandler(formData: CreateBoardModalForm) {
     const { title } = formData;
     const body = {
       title: title,
@@ -80,7 +87,9 @@ const Column: FC<IColumnProps> = ({ column }) => {
       userId: localStorage.getItem('id'),
       users: ['string'],
     };
-    createNewTask({ boardId, columnId, body });
+    const newTask = await createNewTask({ boardId, columnId, body }).unwrap();
+    const newColumnTasks = [...(columnsTasks.get(columnId) as ITask[]), newTask];
+    dispatch(setLocalColumnTasks([columnId, newColumnTasks as ITask[]]));
   }
 
   return (

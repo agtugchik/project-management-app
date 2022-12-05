@@ -5,15 +5,10 @@ import Footer from '../UI/Footer/Footer';
 import AppRouter from '../AppRouter';
 import { useAppDispatch } from '../../hooks/redux';
 import { setHasToken } from '../../store/reducers/NavbarReducer';
-import { Paths } from '../../helpers/routerPaths';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const App = () => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
-
-  const location = useLocation();
-  const navigate = useNavigate();
 
   let content;
   if (isLoading) {
@@ -30,11 +25,9 @@ const App = () => {
     const token = localStorage.getItem('token');
     if (token) {
       dispatch(setHasToken(true));
-      if (location.pathname.includes(Paths.SignIn) || location.pathname.includes(Paths.SignUp))
-        navigate(Paths.MainPage);
     }
     setIsLoading(false);
-  }, [dispatch, location.pathname, navigate]);
+  }, [dispatch]);
 
   return (
     <div className={cl.container}>

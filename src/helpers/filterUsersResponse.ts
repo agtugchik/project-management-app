@@ -16,3 +16,10 @@ export function filterUsers(users: UsersResponse, inputStr: string) {
     }
   });
 }
+
+export function excludeCurrentUser(users: UsersResponse) {
+  const id = localStorage.getItem('id');
+  return users.filter((user) => {
+    return user._id !== String(id);
+  });
+}

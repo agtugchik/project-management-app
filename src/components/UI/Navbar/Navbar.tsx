@@ -43,7 +43,6 @@ const Navbar = () => {
   return (
     <div className={isOpenedMenu ? `${cl.overlay}` : ''} onClick={handleMenuClick}>
       <nav className={isOpenedMenu ? `${cl.container_opened_menu}` : `${cl.container}`}>
-        {isLoadingLocal && <div></div>}
         {!hasToken && !isLoadingLocal && (
           <>
             <NavLink className={isActiveCheck} to={Paths.WelcomePage}>

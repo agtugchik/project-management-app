@@ -25,7 +25,7 @@ const Benefit: React.FC = (): JSX.Element => {
               {item.title === benefits[2].title && (
                 <img className={cl.icon} src={clock} alt="Benefits icon"></img>
               )}
-              {item.title === benefits[2].title && (
+              {item.title === benefits[3].title && (
                 <img className={cl.icon} src={customer} alt="Benefits icon"></img>
               )}
             </div>
