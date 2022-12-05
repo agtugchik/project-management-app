@@ -1,0 +1,258 @@
+$clr-primary: #9dedff;
+$clr-primary-hover: #8ad6ff;
+$clr-primary-dark: #7bdff6;
+$clr-primary-light: #c7f5ff;
+$clr-gray100: #f0f7f8;
+$clr-gray200: #cfd8dc;
+$clr-gray300: #a7b7be;
+$clr-gray400: #6b7e86;
+$clr-gray500: #425a65;
+/*   border radius */
+$radius: 1rem;
+
+.modal__container{
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.7);
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,.5);
+    padding: 0 2rem;
+}
+
+.modal__content{
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, #a97862, #472c15);
+    box-shadow: 0px 5px 34px rgb(0 0 0 / 70%);
+}
+
+.modal__title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: white;
+    order: 0;
+    letter-spacing: 1px;
+}
+.modal__description1,
+.modal__description2 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: whitesmoke;
+    letter-spacing: 1px;
+}
+.modal__description1 {
+  order: 1;
+}
+.modal__description2 {
+  order: 2;
+}
+
+.form {
+    max-width: 28rem;
+    padding: 2rem 2rem 0;
+    border-radius: $radius;
+    background-color: inherit;
+    margin-top: 2rem;
+    order: 4;
+    &__group {
+      position: relative;
+      height: 3rem;
+      margin-bottom: 3.7rem;
+    }
+  
+    &__input {
+      width: 100%;
+      height: 100%;
+      border: 2px solid $clr-gray200;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-weight: inherit;
+      color: inherit;
+      outline: none;
+      padding: 1.25rem;
+      background: floralwhite;
+      font-size: 1rem;
+      &:hover {
+        border-color: $clr-primary;
+      }
+  
+      &:focus {
+        border-color: $clr-primary-dark;
+      }
+    }
+  
+    &__label {
+      position: absolute;
+      left: 1rem;
+      top: 0.9rem;
+      padding: 0 0.5rem;
+      background-color: floralwhite;
+      transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+      border-radius: 1rem;
+    }
+
+    &__spinner {
+      margin: 0 auto;
+    }
+    &__buttons{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top:5rem;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+  
+    &__button,
+    &__button__cancel {
+      display: block;
+      margin-left: 1rem;
+      padding: 0.75rem 2rem;
+      font-family: inherit;
+      font-weight: inherit;
+      border-radius: 0.5rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 200ms ease-in;
+  
+      &:hover {
+        background-color: $clr-primary-dark;
+      }
+    }
+    &__button {
+      background-color: $clr-primary;
+    }
+    &__button__cancel { 
+      background-color: #ebe1c1;
+    }
+
+    .error{
+      padding-top: 5px;
+      color:#ff3131;
+      font-weight: 600;
+      text-shadow: 0px 0px 9px rgb(100 100 100);
+    }
+  }
+  
+  /* 
+  1. When the input is in the focus state
+  reduce the size of the label and move upwards 
+  
+  2. Keep label state when content is in input field 
+  */
+  
+  .form__input:focus ~ .form__label,
+  .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .autocomplete__container{
+    margin: 3rem 2rem 2rem;
+    position: relative;
+    height: 3rem;
+    order: 3;
+    & .usersContainer{
+      position: absolute;
+      width: 100%;
+      height: 200%;
+      background-color: $clr-gray300;
+      overflow: auto;
+      border-radius: 0.2rem;
+      & p{
+        padding: 0.5rem;
+        cursor: pointer;
+        border: 1px solid rgba(255,255,255,.7);
+        border-radius: 0.2rem;
+        background-color: $clr-gray200;
+      }
+      & p:hover{
+        background-color: $clr-primary-hover;
+        transition: 0.3s;
+      }
+    }
+    .invitedUsersContainer{
+      display: flex;
+      gap:1rem;
+      flex-wrap: wrap;
+      padding: 0.5rem;
+      gap: 1rem;
+      height: 4rem;
+      overflow: auto;
+      color: #fd9800;
+      max-width: 21.5rem;
+      & .invitedUser{
+        display: flex;
+        gap:0.5rem;
+        & img{
+          width: 1rem;
+          height: 1rem;
+          cursor: pointer;
+        }
+        & img:hover{
+          filter: invert(15%) sepia(99%) saturate(5703%) hue-rotate(7deg) brightness(101%) contrast(126%);
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background: rgb(206, 146, 6);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+  }
+
+  @media (max-width: 500px) {
+    .modal__container {
+      padding: 0 1rem;
+    }
+    .form {
+      padding: 0;
+      &__spinner {
+        position: absolute;
+        top: -2rem;
+        left: 50%;
+      }
+      &__buttons {
+        position: relative;
+        flex-wrap: wrap;
+        gap: 2rem;
+        flex-direction: column;
+        justify-content: center;
+      }
+      &__button,
+      &__button__cancel {
+        margin-left: 0;
+      }
+    }
+    .autocomplete__container{
+      margin: 3rem 0 2rem;
+    }
+  }
+  @media (max-width: 430px) {
+    .form__buttons {
+      align-items: initial;
+    }
+  }

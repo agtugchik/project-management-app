@@ -1,0 +1,12 @@
+@import "../../../styleVariablesAndMixines/pages.scss";
+@import "../../../styleVariablesAndMixines/fontSizes.scss";
+
+.container {
+  @extend %page-properties;
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
+  }
+}

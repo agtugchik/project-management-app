@@ -1,0 +1,31 @@
+@import "../../../../../styleVariablesAndMixines/fontSizes.scss";
+
+.container {
+  padding-bottom: 10px;
+  padding-left: 0.4rem;
+  grid-area: title;
+  display: flex;
+  flex-direction: row;
+  input {
+    height: 100%;
+    text-overflow: ellipsis;
+    font-size: $font-size-middle;
+    line-height: $font-size-middle;
+  }
+}
+.buttonOk,
+.buttonCancel {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  background-color: #9dedff;
+}
+.buttonOk:hover {
+  background-color: #7bdff6;
+  transition: 0.3s;
+}
+.buttonCancel:hover {
+  background-color: #ed2612;
+  transition: 0.3s;
+}

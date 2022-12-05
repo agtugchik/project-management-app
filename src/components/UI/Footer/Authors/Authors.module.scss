@@ -1,0 +1,32 @@
+@import "../../../../styleVariablesAndMixines/fontSizes.scss";
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  .author {
+    transition: 0.3s;
+    color: #ddd7c7;
+    font-size: 1.4rem;
+    &:hover {
+      transform: scale(1.2);
+    }
+    .icon {
+      width: 2rem;
+    }
+    .nickname {
+      display: inline-block;
+      padding-top: 0.3rem;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .container {
+    flex-direction: column;
+    .author {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

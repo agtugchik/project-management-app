@@ -1,0 +1,274 @@
+@import "../../styleVariablesAndMixines/fontSizes.scss";
+
+$clr-primary: #9dedff;
+$clr-primary-hover: #8ad6ff;
+$clr-primary-dark: #7bdff6;
+$clr-primary-light: #c7f5ff;
+$clr-gray100: #f0f7f8;
+$clr-gray200: #cfd8dc;
+$clr-gray300: #a7b7be;
+$clr-gray400: #6b7e86;
+$clr-gray500: #425a65;
+/*   border radius */
+$radius: 1rem;
+
+
+.icon_loader_wrapper {
+  height: 75vh;
+  display: flex;
+}
+.icon_loader {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 0.2rem solid #a97862;
+  border-top: 0.25rem solid #bd5341;
+  border-radius: 100%;
+  position: relative;
+  left: calc(50% - 1.75rem);
+  top: calc(50% - 1.75rem);
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }to{
+    transform: rotate(360deg);
+  }
+}
+
+.modal__container{
+  position: absolute;
+  min-width: 10rem;
+  background-color: rgb(178, 181, 191);
+  bottom: 80vh;
+  transform: translateX(-100%);
+  border-radius: 0.5rem;
+  animation: move 3s;
+  animation-iteration-count:2;
+  animation-direction:alternate;
+  transition-timing-function: ease-in;
+  & .error__block{
+      padding: 2rem 1rem;
+      color:rgb(149, 13, 13);
+  }
+}
+
+@keyframes move {
+  from {
+      transform: translateX(-100%);
+  }             /* от: left: 0px */
+  to { 
+      transform: translateX(+100%);
+   }
+}
+.form {
+    width: 28rem;
+    padding: 2rem;
+    border-radius: $radius;
+    background-color: white;
+    box-shadow: 0px 5px 34px rgb(0 0 0 / 70%);
+  
+    &__avatar__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      gap: 2rem;
+    }
+    &__edit__logo {
+      width: 4rem;
+      padding-bottom: 1rem;
+    }
+    &__userData__wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: start;
+      font-size: $font-size-middle;
+      gap: 1rem;
+      padding-top: 0.25rem;
+    }
+    &__nameData,
+    &__loginData {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__nameSign,
+    &__loginSign {
+      display: inline-block;
+      min-width: 4rem;
+      color: #501414;
+    }
+    &__name__data {
+      display: inline-block;
+      color: #e19607;
+      font-weight: 600;
+    }
+
+    &__title {
+      margin-bottom: 0.5rem;
+    }
+  
+    &__description {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+  
+    &__group {
+      position: relative;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    &__password{
+      margin-top:3.5rem;
+      position: relative;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    &__login{
+      margin-top:3.5rem;
+      position: relative;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    &__input {
+      width: 100%;
+      height: 100%;
+      border: 2px solid $clr-gray200;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-weight: inherit;
+      color: inherit;
+      outline: none;
+      padding: 1.25rem;
+      background: none;
+  
+      &:hover {
+        border-color: $clr-primary;
+      }
+  
+      &:focus {
+        border-color: $clr-primary-dark;
+      }
+    }
+  
+    &__label {
+      position: absolute;
+      left: 1rem;
+      top: 0.9rem;
+      padding: 0 0.5rem;
+      background-color: white;
+      transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    }
+    &__spinner {
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+    }
+    &__buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 3rem;
+        position: relative;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+    &__margin {
+      margin-top: 5rem;
+    }
+
+    &__signInButtons{
+      display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top:5rem;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+  
+    &__button {
+      display: block;
+      padding: 0.75rem 2rem;
+      background-color: $clr-primary;
+      font-family: inherit;
+      font-weight: inherit;
+      border-radius: 0.5rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 200ms ease-in;
+      text-align: center;
+      &:hover {
+        background-color: $clr-primary-dark;
+      }
+    }
+    &__deleteButton{
+      display: block;
+      padding: 0.75rem 2rem;
+      background-color: $clr-primary;
+      font-family: inherit;
+      font-weight: inherit;
+      border-radius: 0.5rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 200ms ease-in;
+      text-align: center;
+      &:hover {
+        background-color: $clr-primary-dark;
+      } 
+    }
+    .error{
+      padding-top: 5px;
+      color:red;
+    }
+  }
+  
+  /* 
+  1. When the input is in the focus state
+  reduce the size of the label and move upwards 
+  
+  2. Keep label state when content is in input field 
+  */
+  
+  .form__input:focus ~ .form__label,
+  .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 410px) {
+    .form{
+      max-width: 24rem;
+      &__password {
+        margin-top: 4.1rem;
+      }
+      &__buttons {
+        margin-top: 5.5rem;
+        position: relative;
+      }
+      &__login {
+        margin-top: 4.5rem;
+      }
+      &__margin__pass {
+        margin-top: 5.1rem;
+      }
+      &__margin {
+        margin-top: 7.5rem;
+      }
+    }
+  }

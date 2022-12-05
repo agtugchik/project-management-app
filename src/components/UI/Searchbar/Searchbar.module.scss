@@ -1,0 +1,57 @@
+.form__wrapper {
+  margin: 0 auto;
+  padding: 0 30px 1rem;
+}
+.searchbar {
+  margin-top: 10px;
+  position: relative;
+  margin: 0 auto;
+  &__line {
+    height: 2.5rem;
+    width: 300px;
+    border: 2px solid gray;
+    border-radius: 0.7rem;
+    font-size: 1.5rem;
+    transition: 0.3s;
+    padding-left: 2rem;
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      background-image: url("../../../assets/searchbar/close.svg");
+      background-size: 1.7rem;
+      width: 1.7rem;
+      height: 1.7rem;
+      transition: 0.3s;
+      position: relative;
+      left: 1px;
+    }
+    &:focus {
+      border: 2px solid #501414;
+    }
+  }
+  &__submit {
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    background-color: inherit;
+    background-image: url("../../../assets/searchbar/search.svg");
+    background-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(0.4);
+    transition: 0.3s;
+    &:hover {
+      filter: invert(0);
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .searchbar__line {
+    width: 250px;
+  }
+}
+@media (max-width: 320px) {
+  .searchbar__line {
+    width: 200px;
+  }
+}

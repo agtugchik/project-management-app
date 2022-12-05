@@ -1,0 +1,21 @@
+.button_burger {
+    display: inline-flex;
+    background-color: transparent;
+    color: cornsilk;
+    font-size: 2rem;
+    z-index: 6;
+}
+.button_burger:hover {
+  color: rgb(207, 207, 207);
+  background: transparent;
+}
+.icon {
+    height: 2.5rem;
+    fill: currentcolor;
+    flex-shrink: 0;
+}
+@media (min-width: 911px) {
+  .button_burger {
+    display: none;
+  }
+}

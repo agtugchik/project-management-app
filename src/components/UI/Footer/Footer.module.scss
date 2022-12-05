@@ -1,0 +1,28 @@
+@import "../../../styleVariablesAndMixines/headerAndFooter.scss";
+
+.container {
+  @include base-style;
+  min-height: $footer-height;
+  margin-top: auto;
+  border-top: 2px solid black;
+  background-color: #764a23;
+  .wrapper {
+    @include base-wrapper;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 610px) {
+  .container {
+    .wrapper {
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .container {
+    .wrapper {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+$clr-title: #fd9800;
+$clr-title-hover: #e28a06;
+$fs-logo: 2.3rem;
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: auto;
+}
+.link {
+    cursor: pointer;
+}
+.logo_title {
+    display: inline-block;
+    font-size: $fs-logo;
+    padding: 0.15rem 0 0 0.5rem;
+    font-weight: 700;
+    color: $clr-title;
+}
+.link:hover .logo_title {
+    color: $clr-title-hover;
+    transition: 0.2s;
+}

@@ -1,0 +1,23 @@
+@import "../../../styleVariablesAndMixines/headerAndFooter.scss";
+$bg-base: #764a23;
+$bg-scroll: #9b612e;
+
+.container {
+  @include base-style;
+  min-height: $header-height;
+  margin-bottom: auto;
+  border-bottom: 2px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $bg-base;
+  transition: 0.3s;
+  &_scrolled {
+    background-color: $bg-scroll;
+  }
+  .wrapper {
+    @include base-wrapper;
+    gap: 2rem;
+    justify-content: end;
+  }
+}

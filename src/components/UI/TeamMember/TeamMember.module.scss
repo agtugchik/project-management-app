@@ -1,0 +1,49 @@
+.item_container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 1rem 1rem;
+  padding: 1rem;
+  border: 0.1rem solid #bf7d1d;
+  border-radius: 2rem;
+  background: linear-gradient(109deg, #955823, transparent, #955823);
+  color: #501414;
+}
+.photo {
+  width: 15rem;
+  border-radius: 50%;
+}
+.name {
+  font-size: 1.8rem;
+}
+.icon {
+  width: 2rem;
+}
+.icons_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.role {
+  font-size: 1.5rem;
+}
+.icon_title {
+  text-decoration: none;
+  color: #000;
+}
+.github_link:hover,
+.linkedin_link:hover {
+  filter: invert(0.5);
+  transition: 0.3s;
+}
+@media (max-width: 400px) {
+  .item_container {
+    width: 15rem;
+  }
+  .photo {
+    width: 12rem;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,16 @@
+@import "../../../styleVariablesAndMixines/pages.scss";
+
+.container {
+  @extend %page-properties;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #79ceff;
+  background-image: linear-gradient(315deg, #79ceff 0%, #dcb5ff 67%, #ffb8f0 100%);
+}
+
+@media (max-width: 450px) {
+  .container{
+    padding: 0 2rem;
+  }
+}

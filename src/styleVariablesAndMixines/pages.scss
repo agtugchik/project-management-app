@@ -1,0 +1,6 @@
+@import "./headerAndFooter.scss";
+
+%page-properties {
+  width: 100%;
+  min-height: calc(100vh - $header-height - $footer-height - 10px);
+}

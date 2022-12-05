@@ -1,0 +1,104 @@
+@import "../../../../styleVariablesAndMixines/fontSizes.scss";
+
+$clr-gradient-dark: #895338;
+$clr-gradient-light: #b17f37;
+$clr-title: #fd9800;
+$clr-proposal: floralwhite;
+
+.wrapper {
+  background: linear-gradient(53deg, $clr-gradient-dark, $clr-gradient-light, $clr-gradient-dark);
+  padding: 0 30px;
+  width: 100%;
+  .container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-image: url('../../../../assets/time-planning.jpg');
+    min-height: 30rem;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: 50%;
+    .title {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      color: $clr-title;
+    }
+    .tagline {
+      font-size: $font-size-large;
+      margin-bottom: 5rem;
+      color: $clr-title;
+    }
+    .proposal {
+      font-size: 2.3rem;
+      max-width: 45%;
+      line-height: 1.2;
+      color: $clr-proposal;
+    }
+    .proposal:nth-child(3) {
+    margin-bottom: 1rem;
+    }
+  }
+}
+
+@media (max-width: 1330px) {
+  .wrapper {
+    .container {
+      background-size: contain;
+      min-height: 33rem;
+      .proposal {
+        max-width: 40%;
+      }
+    }
+  }
+}
+@media (max-width: 1210px) {
+  .wrapper{
+    .container {
+      position: relative;
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5)), url('../../../../assets/time-planning.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      .title, 
+      .tagline {
+        text-align: right;
+      }
+      .proposal {
+        max-width: 50%;
+      }
+    }
+  }
+}
+@media (max-width: 910px) {
+  .wrapper {
+    .container {
+      background: none;
+      min-height: 28rem;
+      .tagline {
+        margin-bottom: 3rem;
+      }
+      .title {
+        font-size: 4rem;
+      }
+      .title, 
+      .tagline {
+        text-align: left;
+      }
+      .proposal {
+        max-width: 100%;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .wrapper {
+    .container {
+    .proposal {
+      font-size: $font-size-large;
+      }
+    }
+  }
+}

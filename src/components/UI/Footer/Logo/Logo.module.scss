@@ -1,0 +1,8 @@
+.logo {
+  cursor: pointer;
+  transition: 0.3s;
+  filter: brightness(0.65) contrast(400%) grayscale(10%) invert(73%) opacity(90%) saturate(90%) sepia(100%);
+  &:hover {
+    transform: scale(1.1);
+  }
+}

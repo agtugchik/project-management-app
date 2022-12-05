@@ -1,0 +1,43 @@
+$clr-main: #fd9800;
+
+.container {
+  display: flex;
+  max-width: 45%;
+  .icon_wrapper {
+    .icon {
+      max-height: 4rem;
+    }
+  }
+  .content_container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 9rem;
+    .benefit_title {
+      font-size: 1.8rem;
+      margin-bottom: 2.1rem;
+      font-weight: 600;
+      color: $clr-main;
+    }
+    .benefit_content {
+      font-size: 1.3rem;
+      line-height: 1.4;
+      margin-bottom: 2.5rem;
+      min-height: 9rem;
+    }
+  }
+}
+
+@media (max-width: 910px) {
+  .container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 560px) {
+  .container {
+    flex-direction: column;
+    .icon_wrapper {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

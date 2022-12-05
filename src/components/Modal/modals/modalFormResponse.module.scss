@@ -1,0 +1,29 @@
+.modal__container{
+    position: absolute;
+    width: 10rem;
+    background-color: rgb(178, 181, 191);
+    bottom: 80vh;
+    transform: translateX(-100%);
+    border-radius: 0.5rem;
+    animation: move 3s;
+    animation-iteration-count:2;
+    animation-direction:alternate;
+    transition-timing-function: ease-in;
+    & .succsess__block{
+        padding: 2rem 3rem;
+        color:rgb(36, 107, 36);
+    }
+    & .error__block{
+        padding: 2rem 1rem;
+        color:rgb(149, 13, 13);
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translateX(-100%);
+    }             /* от: left: 0px */
+    to { 
+        transform: translateX(+100%);
+     }
+  }

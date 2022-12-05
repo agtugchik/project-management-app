@@ -1,0 +1,25 @@
+@import "../../../styleVariablesAndMixines/pages.scss";
+
+.container {
+  @extend %page-properties;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  background-color: #79ceff;
+  background-image: linear-gradient(
+    315deg,
+    #79ceff 0%,
+    #dcb5ff 67%,
+    #ffb8f0 100%
+  );
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #425a65;
+}
+
+@media (max-width: 450px) {
+  .container{
+    padding: 0 2rem;
+  }
+}
+

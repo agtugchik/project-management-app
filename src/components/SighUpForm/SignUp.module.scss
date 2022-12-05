@@ -1,0 +1,180 @@
+$clr-primary: #9dedff;
+$clr-primary-hover: #8ad6ff;
+$clr-primary-dark: #7bdff6;
+$clr-primary-light: #c7f5ff;
+$clr-gray100: #f0f7f8;
+$clr-gray200: #cfd8dc;
+$clr-gray300: #a7b7be;
+$clr-gray400: #6b7e86;
+$clr-gray500: #425a65;
+/*   border radius */
+$radius: 1rem;
+
+.form {
+    max-width: 28rem;
+    padding: 1.5rem 2rem 2rem;
+    border-radius: $radius;
+    background-color: white;
+    box-shadow: 0px 5px 34px rgb(0 0 0 / 70%);
+
+    &__avatar__wrapper {
+      width: 7rem;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    &__avatar {
+      width: 5rem;
+      padding: 0.5rem 0 2rem;
+    }
+    &__reg_logo {
+      width: 5rem;
+      padding-bottom: 1rem;
+    }
+    &__title {
+      margin-bottom: 0.5rem;
+    }
+  
+    &__description {
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      text-align: center;
+      line-height: 1.2;
+      min-height: 3.7rem;
+    }
+  
+    &__group {
+      position: relative;
+      height: 3rem;
+      margin-bottom: 3.5rem;
+    }
+    &__password{
+      margin-top:3.5rem;
+      position: relative;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    &__login{
+      position: relative;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    &__input {
+      width: 100%;
+      height: 100%;
+      border: 2px solid $clr-gray200;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-weight: inherit;
+      color: inherit;
+      outline: none;
+      padding: 1.25rem;
+      background: none;
+  
+      &:hover {
+        border-color: $clr-primary;
+      }
+  
+      &:focus {
+        border-color: $clr-primary-dark;
+      }
+    }
+  
+    &__label {
+      position: absolute;
+      left: 1rem;
+      top: 0.9rem;
+      padding: 0 0.5rem;
+      background-color: white;
+      transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:5rem;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+    &__signInButtons{
+      display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:5rem;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+  
+    &__button {
+      display: block;
+      margin-left: 1rem;
+      padding: 0.75rem 2rem;
+      background-color: $clr-primary;
+      font-family: inherit;
+      font-weight: inherit;
+      border-radius: 0.5rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 200ms ease-in;
+  
+      &:hover {
+        background-color: $clr-primary-dark;
+      }
+    }
+    .error{
+      padding-top: 5px;
+      color:red;
+    }
+  }
+  
+  /* 
+  1. When the input is in the focus state
+  reduce the size of the label and move upwards 
+  
+  2. Keep label state when content is in input field 
+  */
+  
+  .form__input:focus ~ .form__label,
+  .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 910px) {
+    .form__login {
+      margin-bottom: 4.5rem;
+    }
+  }
+  @media (max-width: 450px) {
+    .form__login {
+      margin-bottom: 3.5rem;
+    }
+  }
+  @media (max-width: 410px) {
+    .form {
+      max-width: 24rem;
+    }
+    .form__login {
+      margin-top: 4.5rem;
+    }
+    .form__margin {
+      margin-top: 7.5rem;
+    }
+    .form__password {
+      margin-top: 6rem;
+    }
+  }
